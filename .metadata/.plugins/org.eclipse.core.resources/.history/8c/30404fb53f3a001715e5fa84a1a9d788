@@ -1,0 +1,28 @@
+package com.springinaction.knights;
+
+
+
+import org.junit.Test;
+import org.junit.runners.Parameterized.Parameters;
+
+import static org.junit.Assert.*;
+
+import org.junit.Assert;
+
+
+public class PersonTest {
+	@Test
+	@Parameters(name = "adultValues")
+	public void personIsAdult(int age, boolean valid) throws Exception {
+	    assertEquals(valid, new Person(age).isAdult());
+	}
+
+	private Object[] adultValues() {
+	    return new Object[]{
+	                 new Object[]{13, false},
+	                 new Object[]{17, false},
+	                 new Object[]{18, true},
+	                 new Object[]{22, true}
+	            };
+	}
+}

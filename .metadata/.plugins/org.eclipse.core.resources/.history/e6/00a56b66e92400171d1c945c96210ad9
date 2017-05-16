@@ -1,0 +1,15 @@
+package com.springinaction.knights;
+
+import org.junit.Assert;
+import org.junit.Test;
+
+public class PersonTest2 {
+	
+	@Test
+	public void isAdult() throws Exception {
+		
+		Person kid1 = new Person(12);
+		Assert.assertFalse(kid1.isAdult());		
+	}
+
+}

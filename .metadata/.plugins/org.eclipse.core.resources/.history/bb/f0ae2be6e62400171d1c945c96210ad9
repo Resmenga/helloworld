@@ -1,0 +1,16 @@
+package com.springinaction.knights;
+
+import org.junit.Test;
+import org.junit.runners.Parameterized.Parameters;
+
+public class PersonTest {
+
+	
+	@Test
+	@Parameters({ 
+	        "17, false", 
+	        "22, true" })
+	public void personIsAdult(int age, boolean valid) throws Exception {
+	    assertThat(new Person(age).isAdult(), is(valid));
+	}
+}

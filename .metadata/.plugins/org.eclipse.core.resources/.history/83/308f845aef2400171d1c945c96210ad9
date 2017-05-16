@@ -1,0 +1,17 @@
+package dsfsadfasd;
+
+@RunWith(MockitoJUnitRunner.class)
+public class ReportServiceImplTestMockito {
+
+    @Mock
+    private TaskService       mockTaskService;
+
+    @InjectMocks
+    private ReportServiceImpl service;
+
+
+    @Test
+    public void testMockInjected() {
+        System.out.println(service.getTaskServiceImpl());
+    }
+}

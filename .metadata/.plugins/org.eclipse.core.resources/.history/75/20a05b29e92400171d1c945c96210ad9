@@ -1,0 +1,38 @@
+package com.springinaction.knights;
+
+
+
+import org.junit.Test;
+import org.junit.runners.Parameterized.Parameters;
+
+import junit.framework.Assert;
+
+
+public class PersonTest {
+
+	@Test
+	//@Parameters
+	public void isAdult(Person person, boolean valid) throws Exception {
+		//Assert.assertEquals(person.isAdult(), valid);
+		
+		Person kid1 = new Person(12);
+		Assert.assertFalse(kid1.isAdult());
+		Person kid2 = new Person(17);
+		Assert.assertFalse(kid2.isAdult());
+		Person adult1 = new Person(18);
+		Assert.assertTrue(adult1.isAdult());
+		Person adult2 = new Person(23);
+		Assert.assertTrue(adult2.isAdult());
+		
+		
+	}
+/*
+	private Object[] parametersForIsAdult() {
+	    return new Object[]{
+	                 new Object[]{new Person(13), false},
+	                 new Object[]{new Person(17), false},
+	                 new Object[]{new Person(18), true},
+	                 new Object[]{new Person(22), true}
+	            };
+	}*/
+}

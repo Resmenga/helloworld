@@ -1,0 +1,59 @@
+package Cenas;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+
+import org.junit.runners.Parameterized.Parameters;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+
+import java.util.Arrays;
+import java.util.Collection;
+
+@RunWith(value = Parameterized.class)
+public class ParameterizedTest {
+
+    //default value = 0
+    //@Parameter
+    public String domainName;
+    public boolean expected;
+    
+    public ParameterizedTest(String domainName, boolean expected) {
+        this.domainName = domainName;
+        this.expected = expected;
+    }
+    
+    /*
+	//Single parameter, use Object[]
+    @Parameters(name = "{index}: testDomain - {0}")
+    public static Object[] data() {
+        return new Object[]{
+                "google.com",
+                "mkyong.com",
+                "twitter.com",
+                
+        };
+    }*/
+    
+ // name attribute is optional, provide an unique name for test
+ 	// multiple parameters, uses Collection<Object[]>
+     @Parameters(name = "{index}: testAdd({0}+{1}) = {2}")
+     public static Collection<Object[]> data() {
+         return Arrays.asList(new Object[][]{
+                 {"google.com", true},
+                 {"sfdsdf", false},
+                 {"ola.com", true},
+                 {"345345", false},
+                 {"abcdefg.com", true},
+         });
+     }
+
+
+    @Test
+    public void test_valid_domain() {
+        assertThat(DomainUtils.isValid(domainName), is(expected));
+    }
+
+}
